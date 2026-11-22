@@ -35,6 +35,10 @@ fs.mkdirSync(out, {recursive:true});
     await page.waitForTimeout(2600);
     await page.keyboard.up('ArrowRight'); await page.keyboard.up('Shift');
     await page.screenshot({path:path.join(out,'960-success.png')});
+    await page.waitForTimeout(1200);
+    await page.reload({waitUntil:'load'});
+    await page.waitForTimeout(4500);
+    await page.screenshot({path:path.join(out,'960-reloaded-record.png')});
   } else {
     await page.mouse.move(155, 585); await page.mouse.down(); await page.waitForTimeout(600); await page.mouse.up();
     await page.screenshot({path:path.join(out,'320-touch.png')});
