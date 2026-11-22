@@ -4,4 +4,6 @@
 
 아트 정의 `ART.md`, 글꼴 라이선스 `CREDITS.md`, 테스트 `TESTS.md`, 배포 절차 `DEPLOY.md`. `evidence/`에는 실제 Godot Web을 Chrome에서 렌더한 상태별 스크린샷이 있다.
 
-배포 상태: 진행 중. 최종 URL·SHA·검증은 배포 후 기입.
+배포 완료: 새 공개 저장소 `https://github.com/boss489/roof-breath-run-20261123`의 main/docs Pages 소스. 게임 바이너리 최초 배포 커밋 `1e61f537f0eea6aa6ae1be24077c71a31ad6999d`; Pages 빌드 `built` (2026-11-22T20:34:14Z = 2026-11-23 05:34:14 KST). 공개 URL `https://boss489.github.io/roof-breath-run-20261123/`. HTML/JS/PCK/WASM HTTP 206 Range 응답 및 Chrome에서 실제 공개 게임의 데스크톱·320px 플레이/성공 확인; `evidence/public/`. 최종 문서·증거 업데이트 후 원격 main SHA는 별도로 검증한다.
+
+한계: 실제 휴대폰/Safari/Firefox 미확인; 로컬 첫 접속 favicon 404(공개 사이트 재검증에서는 콘솔 오류 없음); 영속 저장은 코드와 메모리 폴백만 검사하고 브라우저 새로고침 지속성은 별도 자동 검증하지 않았다.
