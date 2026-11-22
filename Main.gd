@@ -145,7 +145,10 @@ func _hit(point: Vector2) -> String:
 
 func text(value: String, x: float, y: float, size: int = 30, color: Color = CREAM, align: int = HORIZONTAL_ALIGNMENT_LEFT, width: float = -1) -> void:
     var origin := x - width * 0.5 if align == HORIZONTAL_ALIGNMENT_CENTER and width > 0 else x
-    draw_string(FONT, Vector2(origin, y), value, align, width, size, color)
+    var baseline := Vector2(origin, y)
+    if get_viewport_rect().size.y > 1000:
+        draw_string_outline(FONT, baseline, value, align, width, size, 3, color)
+    draw_string(FONT, baseline, value, align, width, size, color)
 
 func panel(box: Rect2, fill: Color, outline: Color = CYAN) -> void:
     draw_rect(box, fill, true)
@@ -166,7 +169,7 @@ func _draw() -> void:
     elif game.mode == "TUTORIAL": _tutorial(h)
     elif game.mode == "SUCCESS": _end_screen(h, true)
     elif game.mode == "FAILURE": _end_screen(h, false)
-    button(Rect2(795, 20, 135, 65), "♪ 켬" if not game.muted else "♪ 끔", false, 22)
+    button(Rect2(795, 20, 135, 65), "♪ 켬" if not game.muted else "♪ 끔", false, 31 if h > 1000 else 22)
 
 func _skyline(h: float) -> void:
     draw_circle(Vector2(744, h * 0.18), 64, Color("#fce5af"))
@@ -225,17 +228,22 @@ func _roof(h: float, stage: int, hero_pos: float, stamina: int) -> void:
 
 func _play_scene(h: float) -> void:
     _roof(h, game.stage, visual_x, game.stamina)
-    button(Rect2(20, 20, 150, 65), "Ⅱ 메뉴", false, 25)
-    text("지붕  %d / 3" % (game.stage + 1), 50, 146, 43)
-    text("목숨  %s" % "♥".repeat(game.lives), 50, 198, 35, ORANGE)
-    text("기력", 600, 146, 35)
+    var narrow := h > 1000
+    button(Rect2(20, 20, 150, 65), "Ⅱ 메뉴", false, 34 if narrow else 25)
+    text("지붕  %d / 3" % (game.stage + 1), 50, 146, 52 if narrow else 43)
+    text("목숨  %s" % "♥".repeat(game.lives), 50, 204 if narrow else 198, 44 if narrow else 35, ORANGE)
+    text("기력", 600, 146, 44 if narrow else 35)
     for i in 4:
         panel(Rect2(688 + i * 60, 112, 46, 36), CYAN if i < game.stamina else Color("#304866"), CYAN)
-    text("%d틱  ·  %.1f초" % [game.ticks, game.ticks * 0.2], 50, 248, 30, Color("#bdcfdf"))
-    text("안전 지붕에서는 멈춰 기력을 채우세요", 480, h * 0.67, 31, CREAM, HORIZONTAL_ALIGNMENT_CENTER, 870)
+    text("%d틱  ·  %.1f초" % [game.ticks, game.ticks * 0.2], 50, 263 if narrow else 248, 40 if narrow else 30, CREAM if narrow else Color("#bdcfdf"))
+    if narrow:
+        text("안전 지붕에서 멈추면", 480, h * 0.67, 46, CREAM, HORIZONTAL_ALIGNMENT_CENTER, 870)
+        text("기력이 차오릅니다", 480, h * 0.67 + 58, 46, CREAM, HORIZONTAL_ALIGNMENT_CENTER, 870)
+    else:
+        text("안전 지붕에서는 멈춰 기력을 채우세요", 480, h * 0.67, 31, CREAM, HORIZONTAL_ALIGNMENT_CENTER, 870)
     for k in 3:
         var action: String = ["left", "right", "sprint"][k]
-        button(Rect2(35 + k * 310, h - 190, 270, 155), ["←  왼쪽", "오른쪽  →", "질주"][k], held.values().has(action), 34)
+        button(Rect2(35 + k * 310, h - 190, 270, 155), ["←  왼쪽", "오른쪽  →", "질주"][k], held.values().has(action), 40 if narrow else 34)
     if game.mode == "RESTART":
         draw_rect(Rect2(0, 0, 960, h), Color("#081225", 0.91))
         text("잠시 숨 고르기", 480, h * 0.37, 61, CREAM, HORIZONTAL_ALIGNMENT_CENTER, 870)

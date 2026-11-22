@@ -7,3 +7,5 @@
 배포 완료: 새 공개 저장소 `https://github.com/boss489/roof-breath-run-20261123`의 main/docs Pages 소스. 게임 바이너리 최초 배포 커밋 `1e61f537f0eea6aa6ae1be24077c71a31ad6999d`; Pages 빌드 `built` (2026-11-22T20:34:14Z = 2026-11-23 05:34:14 KST). 공개 URL `https://boss489.github.io/roof-breath-run-20261123/`. HTML/JS/PCK/WASM HTTP 206 Range 응답 및 Chrome에서 실제 공개 게임의 데스크톱·320px 플레이/성공 확인; `evidence/public/`. 최종 문서·증거 업데이트 후 원격 main SHA는 별도로 검증한다.
 
 한계: 실제 휴대폰/Safari/Firefox 미확인; 로컬 첫 접속 favicon 404(공개 사이트 재검증에서는 콘솔 오류 없음). 공개 사이트의 동일 Chrome 브라우저에서 새로고침 시 최고 기록 47틱 보존 확인; 다른 기기 간 동기화는 제공하지 않는다.
+
+2026-11-23 KST 접근성 보정: 320×640에서 HUD·도움말의 글꼴 크기/획/밝기를 높이고 긴 도움말을 두 줄로 나눔. 기존 3개 터치 버튼의 위치·히트 영역과 게임 로직은 불변. Godot import/16개 로직 체크/한글 글리프/Web export와 로컬 Chrome 960·320의 제목→튜토리얼→플레이→실패→성공 및 320 멀티터치를 재검증함(`TESTS.md`). 보정 배포의 최종 SHA·Pages 상태는 원격 재검증 후 인계한다.

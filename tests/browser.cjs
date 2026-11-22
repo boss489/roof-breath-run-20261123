@@ -47,6 +47,19 @@ fs.mkdirSync(out, {recursive:true});
     await page.waitForTimeout(1050);
     await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
     await page.screenshot({path:path.join(out,'320-multitouch-sprint.png')});
+    for(let i=0;i<3;i++){
+      await page.keyboard.down('ArrowRight'); await page.waitForTimeout(1150); await page.keyboard.up('ArrowRight'); await page.waitForTimeout(300);
+    }
+    await page.screenshot({path:path.join(out,'320-failure.png')});
+    await page.keyboard.press('Enter'); await page.waitForTimeout(300);
+    await page.keyboard.down('Shift'); await page.keyboard.down('ArrowRight');
+    await page.waitForTimeout(6200);
+    await page.keyboard.up('ArrowRight'); await page.keyboard.up('Shift');
+    await page.waitForTimeout(1000);
+    await page.keyboard.down('Shift'); await page.keyboard.down('ArrowRight');
+    await page.waitForTimeout(2600);
+    await page.keyboard.up('ArrowRight'); await page.keyboard.up('Shift');
+    await page.screenshot({path:path.join(out,'320-success.png')});
   }
   console.log(width,'errors',errors.slice(0,10));
   if(errors.some(e=>!e.includes('404'))) throw new Error(`${width} browser errors: ${errors.join('; ')}`);
