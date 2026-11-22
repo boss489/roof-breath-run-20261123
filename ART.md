@@ -1,0 +1,7 @@
+# 숨 고르는 지붕길 — art direction
+
+A miniature midnight city on a continuous indigo-to-ink sky. Every level is a panoramic rooftop cross-section: amber pinstripes signal fragile ceramic; intact ivory roofs have a thick cyan structural edge. Distant staggered building silhouettes, lit windows, a crescent moon, and parallax stars are authored procedural vector drawings, not imported stock art. The courier wears a coral cap and cream scarf; a trailing scarf and offset afterimage animate sprinting. Failure scatters orange fragments; resting emits ascending cyan motes. Orange means danger **with diagonal hatch and a broken edge**, cyan/ivory means safety **with a solid edge**.
+
+Noto Sans KR (SIL OFL) is bundled for all Korean UI; generously spaced typography, high-contrast cream headlines, short instructional cards and numeric tile/stamina indicators. The HUD displays hearts, stage, elapsed ticks and four discrete stamina cells. On-screen controls have three large separated zones anchored to the bottom at every aspect ratio, including 320px; keyboard input remains available. Buttons are pill-shaped, with pressed glow and arrow/bolt icons plus Korean labels. Decorative skyline never occludes controls.
+
+Animation: courier interpolates between deterministic grid positions (0.10 s sprint / 0.20 s walk), scarf flickers, stars shimmer, roof damage debris decays, energy motes rise. Effects: original generated PCM notes for move, rest, fall, clear, and UI; mute toggle. No third-party game imagery or sound. Visual cues are shape and text as well as hue.
